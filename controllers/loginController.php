@@ -32,6 +32,9 @@ if(isset($_POST['logeo'])){
 }
 
 if(isset($_POST['registro'])){
+
+    
+ 
     if((isset($_POST['user']) && !empty($_POST['user'])) && (isset($_POST['password']) && !empty($_POST['password'])) && (isset($_POST['password2']) && !empty($_POST['password2']))){
         $DB = Database::conexion();
 
