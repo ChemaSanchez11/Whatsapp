@@ -15,8 +15,9 @@ class ChatRepository {
     }
 
     public static function insertComment($comentario, $userId){
+        $date = date("d/m/y");
         $db = Database::conexion();
-        $q = "INSERT INTO `chat`(`text`, `userid`) VALUES ('".$comentario."', ".$userId.")";
+        $q = "INSERT INTO `chat`(`text`, `userid`, `fecha`) VALUES ('".$comentario."', ".$userId." , '". $date ."')";
         $result = $db->query($q);
     }
 }

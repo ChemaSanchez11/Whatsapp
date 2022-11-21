@@ -32,9 +32,40 @@ if (!$_SESSION['user']->getName()) {
 
 $is_admin = $_SESSION['user']->getRol();
 
+echo '<div class="chat">
+        <div class="chat-history">
+            <ul class="m-b-0">';
+
 foreach ($chats as $chat) {
-    echo $chat->getText() . ' ' . $chat->getDate() . ' ' . $chat->getUser()->getImg();
+
+    $user = $chat->getUser();
+
+    if($user->getId() == $_SESSION['user']->getId()){
+        echo '<li class="clearfix">
+                  <div class="message-data text-end pr-1">
+                      <span class="message-data-time">'. $chat->getDate() .'</span>
+                      <img src="'. $chat->getUser()->getImg() .'" alt="avatar">
+                  </div>
+                  <div class="message other-message float-right"> 
+                    '.$chat->getText().'
+                  </div>
+              </li>';
+    }else{
+        echo '<li class="clearfix">
+                  <div class="message-data msg-left">
+                      <img src="'. $chat->getUser()->getImg() .'" alt="avatar">
+                      <span class="message-data-time">'. $chat->getDate() .'</span>
+                  </div>
+                  <div class="message my-message"> 
+                    '.$chat->getText().'
+                  </div>
+              </li>';
+    }
 }
+
+echo '       </ul>
+         </div>
+      </div>';
 
 
 ?>
@@ -48,10 +79,11 @@ foreach ($chats as $chat) {
         </div>
         <form class="col-11 row px-0 mx-0" action="index.php?new_chat" method="POST">
             <div class="col-11 my-auto">
-                <textarea name="message" class="h-75 w-100" ></textarea>
+                <textarea name="message" class="h-75 w-100"></textarea>
             </div>
             <div class="col-1 my-auto">
-                <button type="submit" class="btn" name="new_chat"><h3 class="m-0 p-0"><i class="far fa-paper-plane text-white"></i></h3></button>
+                <button type="submit" class="btn" name="new_chat"><h3 class="m-0 p-0"><i
+                                class="far fa-paper-plane text-white"></i></h3></button>
             </div>
         </form>
     </div>
