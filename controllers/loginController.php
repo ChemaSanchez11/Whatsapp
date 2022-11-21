@@ -42,7 +42,7 @@ if(isset($_POST['registro'])){
             $q = "SELECT * FROM users WHERE user = '".$_POST['user']."'";
             $result = $DB->query($q);
 
-            if(!$result){
+            if(!$result->num_rows){
                 $q = "INSERT INTO users (user, password) VALUES ('".$_POST['user']."', '".md5($_POST['password'])."');";
                 $result = $DB->query($q);
             }else{
