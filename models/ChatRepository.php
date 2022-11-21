@@ -6,8 +6,10 @@ class ChatRepository {
         $db = Database::conexion();
         $q = "SELECT * FROM chat";
         $result = $db->query($q);
-        while ($datos = $result->fetch_assoc()) {
-            $chats[] = new Chats($datos);
+        if($result){
+            while ($datos = $result->fetch_assoc()) {
+                $chats[] = new Chats($datos);
+            }
         }
         return $chats;
     }
