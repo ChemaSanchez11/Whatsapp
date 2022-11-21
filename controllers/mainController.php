@@ -2,6 +2,7 @@
 
 //cargamos el modelo
 require_once('models/UserModel.php');
+require_once('models/UserRepository.php');
 require_once('models/ChatModel.php');
 require_once('models/ChatRepository.php');
 session_start();
@@ -19,9 +20,16 @@ if (isset($_GET['login'])) {
     die();
 }
 
+if (isset($_GET['new_chat'])) {
+
+    if(!$_SESSION['user']->getId()) header('Location: index.php?login');
+    else{
+        require_once('controllers/chatController.php');
+        die();
+    }
+}
+
 $repository = new ChatRepository();
 $chats = $repository->getChats();
-
-echo "gol";
 
 require_once('views/mainView.phtml');

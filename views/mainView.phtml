@@ -27,14 +27,13 @@ $login = null;
 if (!$_SESSION['user']->getName()) {
     $login = 'index.php?login';
 } else {
-    $login = $_SESSION['user']->getName() . 'index.php?login&logout';
+    $login = 'index.php?login&logout';
 }
 
 $is_admin = $_SESSION['user']->getRol();
 
-foreach ($chats as $chat ) {
-    $chat->getText();
-    echo $chat;
+foreach ($chats as $chat) {
+    echo $chat->getText() . ' ' . $chat->getDate() . ' ' . $chat->getUser()->getImg();
 }
 
 
@@ -43,19 +42,18 @@ foreach ($chats as $chat ) {
 <footer class="footer bg-primary py-1">
     <div class="row h-100 mx-2">
         <div class="col-1 my-auto">
-            <a href="<?php echo $login?>">
-                <img class="img-user" src="views/img/users/<?php echo $_SESSION['user']->getImg();?> ">
+            <a href="<?php echo $login ?>">
+                <img class="img-user" src="<?php echo $_SESSION['user']->getImg(); ?>">
             </a>
         </div>
-        <div class="col-11 row px-0 mx-0">
+        <form class="col-11 row px-0 mx-0" action="index.php?new_chat" method="POST">
             <div class="col-11 my-auto">
-                <textarea name="message" class="h-75 w-100"></textarea>
+                <textarea name="message" class="h-75 w-100" ></textarea>
             </div>
             <div class="col-1 my-auto">
-                <h3 class="m-0 p-0"><i class="far fa-paper-plane text-white"></i></h3>
+                <button type="submit" class="btn" name="new_chat"><h3 class="m-0 p-0"><i class="far fa-paper-plane text-white"></i></h3></button>
             </div>
-        </div>
-
+        </form>
     </div>
 </footer>
 

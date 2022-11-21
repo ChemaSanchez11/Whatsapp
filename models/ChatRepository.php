@@ -13,5 +13,11 @@ class ChatRepository {
         }
         return $chats;
     }
+
+    public static function insertComment($comentario, $userId){
+        $db = Database::conexion();
+        $q = "INSERT INTO `chat`(`text`, `userid`) VALUES ('".$comentario."', ".$userId.")";
+        $result = $db->query($q);
+    }
 }
 ?>

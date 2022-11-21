@@ -9,7 +9,6 @@ class User
 
 
     public function __construct ($row){
-
         $this->id = $row['id'];
         $this->name = $row['user'];
         $this->rol = $row['rol'];
@@ -29,8 +28,10 @@ class User
     }
 
     public function getImg(){
-        return $this->img;
+        return 'views/img/users/'.$this->img;
     }
+
+    
 
     public function setRol($rol)
     {
@@ -43,5 +44,7 @@ class User
         $DB = Database::conexion();
         $DB->query("UPDATE `users` SET `rol` = '$rol'WHERE `id` = $this->id");
     }
+
+
 
 }
