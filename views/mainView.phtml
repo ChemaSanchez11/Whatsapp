@@ -32,6 +32,12 @@ if (!$_SESSION['user']->getName()) {
 
 $is_admin = $_SESSION['user']->getRol();
 
+foreach ($chats as $chat ) {
+    $chat->getText();
+    echo $chat;
+}
+
+
 ?>
 
 <footer class="footer bg-primary py-1">
