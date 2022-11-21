@@ -22,4 +22,6 @@ if (isset($_GET['login'])) {
 $repository = new ChatRepository();
 $chats = $repository->getChats();
 
+echo "gol";
+
 require_once('views/mainView.phtml');
