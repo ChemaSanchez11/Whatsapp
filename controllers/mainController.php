@@ -8,6 +8,7 @@ if (!isset($_SESSION['user'])) {
     $datos['id'] = 0;
     $datos['user'] = "";
     $datos['rol'] = 0;
+    $datos['img'] = "default.png";
     $_SESSION['user'] = new User($datos);
 }
 
