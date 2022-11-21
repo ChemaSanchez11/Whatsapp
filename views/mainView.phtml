@@ -47,14 +47,15 @@ foreach ($chats as $chat ) {
                 <img class="img-user" src="views/img/users/<?php echo $_SESSION['user']->getImg();?> ">
             </a>
         </div>
-        <div class="col-10 my-auto">
-            <div class="w-100">
+        <div class="col-11 row px-0 mx-0">
+            <div class="col-11 my-auto">
                 <textarea name="message" class="h-75 w-100"></textarea>
             </div>
+            <div class="col-1 my-auto">
+                <h3 class="m-0 p-0"><i class="far fa-paper-plane text-white"></i></h3>
+            </div>
         </div>
-        <div class="col-1 my-auto">
-            <h3 class="m-0 p-0"><i class="far fa-paper-plane text-white"></i></h3>
-        </div>
+
     </div>
 </footer>
 
