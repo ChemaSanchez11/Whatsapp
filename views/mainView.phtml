@@ -21,18 +21,35 @@
 
 <?php
 
+//Declaramos login para el href del usuario
+$login = null;
+
 if (!$_SESSION['user']->getName()) {
-    echo '<a href="index.php?login">Login</a>';
+    $login = 'index.php?login';
 } else {
-    echo $_SESSION['user']->getName() . ' <a href="index.php?login&logout">Salir</a>';
+    $login = $_SESSION['user']->getName() . 'index.php?login&logout';
 }
 
 $is_admin = $_SESSION['user']->getRol();
 
 ?>
 
-<footer class="footer bg-primary">
-    <span class="text-white">Aqui va el text area</span>
+<footer class="footer bg-primary py-1">
+    <div class="row h-100 mx-2">
+        <div class="col-1 my-auto">
+            <a href="<?php echo $login?>">
+                <img class="img-user" src="views/img/users/<?php echo $_SESSION['user']->getImg();?> ">
+            </a>
+        </div>
+        <div class="col-10 my-auto">
+            <div class="w-100">
+                <textarea name="message" class="h-75 w-100"></textarea>
+            </div>
+        </div>
+        <div class="col-1 my-auto">
+            <i class="far fa-paper-plane text-white"></i>
+        </div>
+    </div>
 </footer>
 
 </body>
