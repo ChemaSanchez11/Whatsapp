@@ -5,13 +5,15 @@ class User
     public $id;
     public $name;
     public $rol;
+    public $img;
 
 
-    public function __construct ($datos){
+    public function __construct ($row){
 
-        $this->id = $datos['id'];
-        $this->name = $datos['user'];
-        $this->rol = $datos['rol'];
+        $this->id = $row['id'];
+        $this->name = $row['user'];
+        $this->rol = $row['rol'];
+        $this->img = $row['img'];
     }
 
     public function getId(){
@@ -24,6 +26,10 @@ class User
 
     public function getRol(){
         return $this->rol;
+    }
+
+    public function getImg(){
+        return $this->img;
     }
 
     public function setRol($rol)
