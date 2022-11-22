@@ -59,19 +59,19 @@ footer {
     position: relative
 }
 
-/*.chat .chat-history .message:after {*/
-/*    bottom: 100%;*/
-/*    left: 7%;*/
-/*    border: solid transparent;*/
-/*    content: " ";*/
-/*    height: 0;*/
-/*    width: 0;*/
-/*    position: absolute;*/
-/*    pointer-events: none;*/
-/*    border-bottom-color: #fff;*/
-/*    border-width: 10px;*/
-/*    margin-left: -10px*/
-/*}*/
+.chat .chat-history .message:after {
+    bottom: 100%;
+    right: 15px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: #fff;
+    border-width: 10px;
+    margin-left: -10px
+}
 
 .chat .chat-history .my-message {
     background: #efefef
@@ -96,10 +96,9 @@ footer {
     text-align: right
 }
 
-/*.chat .chat-history .other-message:after {*/
-/*    border-bottom-color: #e8f1f3;*/
-/*    left: 70px;*/
-/*}*/
+.chat .chat-history .other-message:after {
+    border-bottom-color: #e8f1f3;
+}
 
 .chat .chat-message {
     padding: 20px
