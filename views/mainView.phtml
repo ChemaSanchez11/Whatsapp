@@ -52,6 +52,7 @@ echo '<section class="chat col-9" style="height: 90vh; overflow-y: scroll; overf
 
 foreach ($chats as $chat) {
 
+
     $user = $chat->getUser();
 
     if($user->getId() == $_SESSION['user']->getId()){
