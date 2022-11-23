@@ -4,6 +4,8 @@ class User
 {
     public $id;
     public $name;
+    public $firstname;
+    public $lastname;
     public $rol;
     public $img;
 
@@ -13,6 +15,8 @@ class User
         $this->name = $row['user'];
         $this->rol = $row['rol'];
         $this->img = $row['img'];
+        $this->firstname = $row['firstname'];
+        $this->lastname = $row['lastname'];
     }
 
     public function getId(){
@@ -31,7 +35,14 @@ class User
         return 'views/img/users/'.$this->img;
     }
 
-    
+    public function getFirstName(){
+        return $this->firstname;
+    }
+
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
 
     public function setRol($rol)
     {

@@ -7,6 +7,10 @@ if(isset($_GET['logout'])){
 
 $error = '';
 
+if (isset($_GET['redirect'])){
+    $error = "No puede mandar mensajes sin iniciar sesión";
+}
+
 if(isset($_POST['logeo'])){
     if(isset($_POST['user']) && isset($_POST['password'])){
         $DB = Database::conexion();
@@ -43,7 +47,7 @@ if(isset($_POST['registro'])){
             $result = $DB->query($q);
 
             if(!$result->num_rows){
-                $q = "INSERT INTO users (user, password) VALUES ('".$_POST['user']."', '".md5($_POST['password'])."');";
+                $q = "INSERT INTO users (user, password, firstname, lastname) VALUES ('".$_POST['user']."', '".md5($_POST['password'])."', '".$_POST['firstname']."' ,'".$_POST['lastname']."')";
                 $result = $DB->query($q);
             }else{
                 $error = "Este usuario con este nombre ya existe";

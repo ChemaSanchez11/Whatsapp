@@ -17,8 +17,10 @@
 
 </head>
 <body class="bg-secundary">
-<h1 class="text-white">Ejemplo WhatsApp</h1>
 
+
+
+<div class="row w-100 h-100">
 <?php
 
 //Declaramos login para el href del usuario
@@ -32,7 +34,19 @@ if (!$_SESSION['user']->getName()) {
 
 $is_admin = $_SESSION['user']->getRol();
 
-echo '<div class="chat">
+echo '<aside class="col-3 bg-primary" style="height: 90vh; overflow-y: scroll; overflow-x: hidden;">';
+$users_online = UserRepository::examineLogin();
+
+echo '<div><ul>';
+
+foreach ($users_online as $user){
+    echo '<li class="my-2"> <img src="'.$user->getImg().'" alt="avatar" style="height: 45px; border-radius: 100%;"> '.$user->getFirstname().' '.$user->getLastname().'  </li>';
+}
+
+echo '</ul></div>';
+echo '</aside>';
+
+echo '<section class="chat col-9" style="height: 90vh; overflow-y: scroll; overflow-x: hidden;">
         <div class="chat-history">
             <ul class="m-b-0">';
 
@@ -65,10 +79,13 @@ foreach ($chats as $chat) {
 
 echo '       </ul>
          </div>
-      </div>';
-
+      </section>';
 
 ?>
+
+</div>
+
+
 
 <footer class="footer bg-primary py-1">
     <div class="row h-100 mx-2">
@@ -77,6 +94,7 @@ echo '       </ul>
                 <img class="img-user" src="<?php echo $_SESSION['user']->getImg(); ?>">
             </a>
         </div>
+
         <form class="col-11 row px-0 mx-0" action="index.php?new_chat" method="POST">
             <div class="col-11 my-auto">
                 <textarea name="message" class="h-75 w-100"></textarea>
@@ -84,6 +102,7 @@ echo '       </ul>
             <div class="col-1 my-auto">
                 <button type="submit" class="btn" name="new_chat"><h3 class="m-0 p-0"><i
                                 class="far fa-paper-plane text-white"></i></h3></button>
+                <a href="index.php?new_group"><img src="views/img/more.svg" height="28px"></a>
             </div>
         </form>
     </div>
