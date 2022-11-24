@@ -4,7 +4,7 @@ class ChatRepository {
     public static function getChats(){
         $chats = [];
         $db = Database::conexion();
-        $q = "SELECT * FROM chat";
+        $q = "SELECT * FROM messages WHERE chatid = $chatid";
         $result = $db->query($q);
         if($result){
             while ($datos = $result->fetch_assoc()) {
@@ -14,10 +14,10 @@ class ChatRepository {
         return $chats;
     }
 
-    public static function insertComment($comentario, $userId){
+    public static function insertComment($comentario, $userId, $chatid){
         $date = date("d/m/y");
         $db = Database::conexion();
-        $q = "INSERT INTO `chat`(`text`, `userid`, `fecha`) VALUES ('".$comentario."', ".$userId." , '". $date ."')";
+        $q = "INSERT INTO `messages`(`text`, `userid`, `fecha`, `chatid`) VALUES ('".$comentario."', ".$userId." , '". $date ."', '". $chatid ."')";
         $result = $db->query($q);
     }
 }
