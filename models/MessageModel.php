@@ -1,11 +1,12 @@
 <?php
 
-class Chats
+class Messagge
 {
     private $id;
     private $text;
     private $user;
     private $date;
+    private  $groupId;
 
     public function __construct($datos)
     {
@@ -13,6 +14,7 @@ class Chats
         $this->text = $datos['text'];
         $this->user = UserRepository::getUserById($datos['userid']);
         $this->date = $datos['fecha'];
+        $this->groupId = $datos['chatid'];
     }
 
     public function getId()
