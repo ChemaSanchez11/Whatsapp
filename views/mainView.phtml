@@ -160,8 +160,11 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
                 </a>
             </div>
             <div class="col-6 d-flex">
-                <a class="my-auto" href="index.php?new_chat" style="margin-left: auto"><img src="views/img/more.svg" height="28px"></a>
-            </div>
+                <?php
+                if($_SESSION['user']->id){
+                    echo  '<a class="my-auto" href="index.php?new_chat" style="margin-left: auto"><img src="views/img/more.svg" height="28px"></a>';
+               }
+            ?>
 
         </div>
     </footer>

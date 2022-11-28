@@ -18,4 +18,7 @@ if (isset($_POST['new_chat']) && !empty($_POST['message'])) {
 }
 
 
+//TODO: Al insertar en un chat que no existe redirigir
+
+
 ?>
