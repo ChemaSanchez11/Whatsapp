@@ -6,7 +6,7 @@ class Messagge
     private $text;
     private $user;
     private $date;
-    private  $groupId;
+    private $groupId;
 
     public function __construct($datos)
     {
@@ -27,11 +27,13 @@ class Messagge
         return $this->text;
     }
 
-    public function getUser(){
+    public function getUser()
+    {
         return $this->user;
     }
 
-    public function getDate(){
+    public function getDate()
+    {
         return $this->date;
     }
 

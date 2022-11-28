@@ -38,7 +38,7 @@ if (isset($_GET['new_msg'])) {
 
 if(isset($_GET['new_chat'])){
     if(empty($_POST['create_chat'])){
-        require_once('views/creatChatView.phtml');
+        require_once('views/createChatView.phtml');
         die();
     }
     require_once ('controllers/chatController.php');
@@ -51,32 +51,21 @@ if (isset($_GET['chat'])) {
 }
 
 if (isset($_GET['direct_chat'])){
-        $db = Database::conexion();
-        $q = "SELECT chatid FROM user_chats WHERE chatid = (SELECT chatid FROM user_chats WHERE userid = ". $_SESSION['user']->getId() .") AND userid = " . $_GET['direct_chat'];
-        $result = $db->query($q);
 
-        if($result->num_rows){
-            var_dump($result->fetch_assoc());
-        }else{
-            $name = '(DIRECT) '. UserRepository::getUserById($_GET['direct_chat'])->getFirstname() . ' - '. $_SESSION['user']->getFirstName();
-            $db->query('INSERT INTO chats(id,name) VALUES (NULL,"'. $name .'")');
-            die();
+    $direct_chat = ChatRepository::getDirectChat($_SESSION['user']->getId(), $_GET['direct_chat']);
 
-            //todo HACER INSER EN user_chats para la asociacion
-//            $q = "INSERT INTO user_chats(id,chatid,userid) VALUES (NULL,$_GET['])"
-        }
+    if(!$direct_chat){
+        $id = ChatRepository::createDirectChat($_GET['direct_chat'],$_SESSION['user']);
+        var_dump($id);
+        header("location:index.php?id=$id");
+    }
 
 }
 
-
-
-
-
-
-
-
-
 if(isset($_GET['id']) && !empty($_GET['id'])){
+
+    ChatRepository::existChat($_GET['id']);
+
     $repository = new MessageRepository();
     $messages = $repository->getMessages($_GET['id']);
 }
